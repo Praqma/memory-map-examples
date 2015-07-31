@@ -20,7 +20,7 @@
 XCC     = arm-linux-gnueabi-gcc
 LD      = arm-linux-gnueabi-ld
 CFLAGS  = -g -c -Wall \
-          -I../include
+          -I include
 LDFLAGS = -Map blink.map -T viperlite.ld -N
 
 
