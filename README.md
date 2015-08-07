@@ -22,9 +22,29 @@ Each example is contained on a branch in this repository and must meet few requi
 * if a docker file is supplied for building a docker image it must be named after the branch as `%BRANCHNAME.dockerfile` (e.g. `arm-none-eabi-gcc_4.8.4_hello_world.dockerfile`)
 
 
-## Merging to master
+## Creating a new examples
 
-Branches are not supposed to be merged to master, nor updating from master. Branches are just used to isolate examples.
+Here is the work flow we find the easiest to use:
+
+* branch of master to `dev/myexample`
+* write a new readme, use another example branch as example
+* add/remove needed source code files, makefiles, required scripts etc. Analyse and generate memory map file, manually extract the result and write the expected results json file for this first commit. You can even save the resulting memory map file, maybe adding comments in it to a new file name, eg. mymapp-1.map for the map file the first commit will create.
+* commit this first example, including the JSON file
+* then start doing small code changes, committing them one by one, so they form an interesting and valid use case for memory maps. Make sure to add to the expected result JSON file for every commit
+
+Save the final expected result JSON file, and the final readme file (if you have changed on the way). We need them in a moment.
+
+When you have a series of commit that makes out your example, you need to prepare the real example branch:
+
+* branch of master again (same commmit) but to `myexample`
+* git cherry-pick the first commit from `dev/myexample` with `git cherry-pick --no-commit SHA`. Before committing, add the correct final readme and the final expected result JSON file. Commit with nice commit message.
+* repeat the cherry-pick process for every commit on the dev branch
+* remember to add the _first_ and _last_ tag
+* finally add the graphConfiguration.json file explaining how the Memory Map Plugin for Jenkins jobs should be configured.
+
+
+If you need to rework and modify an existing example, follow the cherry-pick process but give the example branch a new name as explained just below.
+
 
 ## Updating examples
 
@@ -33,6 +53,10 @@ If an example requires to be updated, you must create a new branch for the updat
 E.g. branch `arm-none-eabi-gcc_4.8.4_hello_world` becomes `arm-none-eabi-gcc_4.8.4_hello_world_update1`.
 
 Delete the old branch, and add a changelog section to the branch readme.
+
+## Merging branches
+
+Do not try to merge branches, they are used as isolated work spaces. They are not supposed to be merged with master or each other.
 
 
 
