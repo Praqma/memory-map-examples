@@ -21,6 +21,15 @@ Each example is contained on a branch in this repository and must meet few requi
 * the first, respectively the last, commit in the serie must be tagged `first_%BRANCHNAME` and `last_%BRANCHNAME` (e.g. `first_arm-none-eabi-gcc_4.8.4_hello_world` and `last_arm-none-eabi-gcc_4.8.4_hello_world`)
 * if a docker file is supplied for building a docker image it must be named after the branch as `%BRANCHNAME.dockerfile` (e.g. `arm-none-eabi-gcc_4.8.4_hello_world.dockerfile`)
 
+## Get your example tested
+
+If you find out that the Memory Map Plugin fails to analyse your exact combination of linker/command setup, and the resulting memory map please contribute with data to our tests. Then you also easily can raise a [Jenkins JiRA issue](https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20component%20%3D%20%27memory-map-plugin%27) and point to your contributing example that fails.
+
+You have two choices:
+
+* Supply a linker comand file, and example memory map file generated with that setup as a one-off test. In this case you can make a pull request adding them to the integration tests of the [Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin), or simple attache them to the JIRA issue you create.
+* create an example branch in this repository as explained
+
 
 ## Creating a new examples
 
