@@ -36,6 +36,9 @@ void foo(void) {
 	  /* dummy function to show how this adds to 'text' */
 }
 
+// 'data' is used for initialized data, eg. this global/extern variable:
+int32_t myVar = 0x12345678;
+
 /**********************************************************************
  *
  * Function:    delay_ms
