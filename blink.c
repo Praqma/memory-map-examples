@@ -39,6 +39,9 @@ void foo(void) {
 // 'data' is used for initialized data, eg. this global/extern variable:
 int32_t myVar = 0x12345678;
 
+// Adding uninitialized data to consume bss memory
+int32_t myGlobal;
+
 /**********************************************************************
  *
  * Function:    delay_ms
