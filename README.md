@@ -29,7 +29,7 @@ Example commits:
 Build information:
 
 * an automated prepared build environment, preferable using docker, must be available to use for building so we know how to build it
-* if you supply your own docker file for building a docker image name it `Dockerfile` and place it in the relevant example directory (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world/Dockerfile`)
+* if you supply your own docker file for building a docker image name it `Dockerfile` and place it on the branch, available from the first commit and forward
 * there must be an elaborate readme explaing how to use the example, it must be called `README.md` and placed on the branch and completely replace the `README.md` from the `master`-branch
 * on the branch, for every commit, there must be a `run.sh` script file that will the source code checked out in the repository
 
@@ -37,7 +37,6 @@ Associated example files:
 
 In the examples directory, the following files need to be available:
 
-* Optional: `Dockerfile` to build an image
 * `expectedResults.json` that explains the expected memory map output file result (see one of the other examples)
 * `graphConfiguration.json` explaining how to configure the Memory Map Plugin graphs (see one of the other examples)
 * Optional: If you run the examples manually you can also add the generated series of memory map files to the example directory for reference. See for example `examples/arm-none-eabi-gcc_4.8.4_hello_world/commit*_blink.map`.
