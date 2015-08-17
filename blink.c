@@ -28,6 +28,10 @@
 #define CYCLES_PER_MS               (9000)
 
 
+void foo(void) {
+	  /* dummy function to show how this adds to 'text' */
+}
+
 /**********************************************************************
  *
  * Function:    delay_ms
