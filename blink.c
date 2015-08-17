@@ -27,6 +27,10 @@
 /* Number of decrement-and-test cycles. */
 #define CYCLES_PER_MS               (9000)
 
+// const data is also contributing to 'text' memory area
+// but it is recorded in this setup as .rodata in the memory map
+// file
+const int table[] = {5,0,1,5,6,7,9,10};
 
 void foo(void) {
 	  /* dummy function to show how this adds to 'text' */
