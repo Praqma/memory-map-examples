@@ -11,15 +11,42 @@ The examples could also serve as test base scripts and other solutions that mimi
 
 ## Example requirements
 
-Each example is contained on a branch in this repository and must meet few requirements to make us able to automate testing:
+Each example is contained on a branch in this repository, and have associated files in the `examples`-directory.
 
-* create example from latest `master`
-* branch name must contain compiler and version number in the name (e.g. `arm-none-eabi-gcc_4.8.4_hello_world`)
-* an automated prepared build environment, preferable using docker, must be available to use for building
-* there must be an elaborate readme explaing how to use the example
+You must prepare a set of commits that changes the an example source code project, commit by commit, to show how a memory map changes for each commit. We will automatically build each commit and analyse the memory map output file.
+Associated with the series of commit on the example branch, you must supply some files in the `example`-directory, like expected memory map output results, a graph configuration for the Memory Map Plugin you find relevant.
+
+Branch and directories:
+
+* create a branch from latest `master`, where your new branch name must contain compiler and version number in the name (e.g. `arm-none-eabi-gcc_4.8.4_hello_world`)
+* create a matching directory in examples (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world`)
+
+Example commits:
+
 * a series of commits that changes the memory usage must be added to the branch, in consecutive order and all buildable
 * the first, respectively the last, commit in the serie must be tagged `first_%BRANCHNAME` and `last_%BRANCHNAME` (e.g. `first_arm-none-eabi-gcc_4.8.4_hello_world` and `last_arm-none-eabi-gcc_4.8.4_hello_world`)
-* if a docker file is supplied for building a docker image it must be named after the branch as `%BRANCHNAME.dockerfile` (e.g. `arm-none-eabi-gcc_4.8.4_hello_world.dockerfile`)
+
+Build information:
+
+* an automated prepared build environment, preferable using docker, must be available to use for building so we know how to build it
+* if you supply your own docker file for building a docker image name it `Dockerfile` and place it in the relevant example directory (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world/Dockerfile`)
+* there must be an elaborate readme explaing how to use the example, it must be called `README.md` and placed on the branch and completely replace the `README.md` from the `master`-branch
+* on the branch, for every commit, there must be a `run.sh` script file that will the source code checked out in the repository
+
+Associated example files:
+
+In the examples directory, the following files need to be available:
+
+* Optional: `Dockerfile` to build an image
+* `expectedResults.json` that explains the expected memory map output file result (see one of the other examples)
+* `graphConfiguration.json` explaining how to configure the Memory Map Plugin graphs (see one of the other examples)
+* Optional: If you run the examples manually you can also add the generated series of memory map files to the example directory for reference. See for example `examples/arm-none-eabi-gcc_4.8.4_hello_world/commit*_blink.map`.
+
+
+
+**We can support and help with everything else than the source code changes and how to build it... send us an mail or just contribute what-ever you have through a pull request**
+
+
 
 ## Get your example tested
 
@@ -31,44 +58,26 @@ You have two choices:
 * create an example branch in this repository as explained
 
 
-## Creating a new examples
-
-Here is the work flow we find the easiest to use:
-
-* branch of master to `dev/myexample`
-* write a new readme, use another example branch as example
-* add/remove needed source code files, makefiles, required scripts etc. Analyse and generate memory map file, manually extract the result and write the expected results json file for this first commit. You can even save the resulting memory map file, maybe adding comments in it to a new file name, eg. mymapp-1.map for the map file the first commit will create.
-* commit this first example, including the JSON file
-* then start doing small code changes, committing them one by one, so they form an interesting and valid use case for memory maps. Make sure to add to the expected result JSON file for every commit
-
-Save the final expected result JSON file, and the final readme file (if you have changed on the way). We need them in a moment.
-
-When you have a series of commit that makes out your example, you need to prepare the real example branch:
-
-* branch of master again (same commmit) but to `myexample`
-* git cherry-pick the first commit from `dev/myexample` with `git cherry-pick --no-commit SHA`. Before committing, add the correct final readme and the final expected result JSON file. Commit with nice commit message.
-* repeat the cherry-pick process for every commit on the dev branch
-* remember to add the _first_ and _last_ tag
-* finally add the graphConfiguration.json file explaining how the Memory Map Plugin for Jenkins jobs should be configured.
-
-
-If you need to rework and modify an existing example, follow the cherry-pick process but give the example branch a new name as explained just below.
-
-
 ## Updating examples
 
 If an example requires to be updated, you must create a new branch for the updated example.
 
 E.g. branch `arm-none-eabi-gcc_4.8.4_hello_world` becomes `arm-none-eabi-gcc_4.8.4_hello_world_update1`.
 
-Delete the old branch, and add a changelog section to the branch readme.
+Delete the old branch, and add a changelog section to the branch readme. Also remember to rename the example directory to match.
+
+Git cherry-pick will help you pick out commits for the new branch, and even modify them before committing them using the `--no-commit` paramter.
+
 
 ## Merging branches
 
 Do not try to merge branches, they are used as isolated work spaces. They are not supposed to be merged with master or each other.
 
-
-
 ## Contributions
 
 Please contribute by pull request.
+
+
+## Support and issue
+
+Send a mail to support@praqma.net

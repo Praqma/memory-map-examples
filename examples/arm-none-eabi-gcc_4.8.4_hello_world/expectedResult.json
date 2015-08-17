@@ -1,0 +1,116 @@
+{
+	"buildresults": {
+		"1": {
+			"ram": {
+							"Origin": "0x00400000",
+							"Length": "67108864",
+							"Used":		"0x04000000"},
+			"rom": {
+							"Origin": "0x60000000",
+							"Length": "16777216",
+							"Used":		"0x60000000"},
+			".data": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".bss": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".text": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"316"}
+		},
+		"2": {
+			"ram": {
+							"Origin": "0x00400000",
+							"Length": "67108864",
+							"Used":		"0x04000000"},
+			"rom": {
+							"Origin": "0x60000000",
+							"Length": "16777216",
+							"Used":		"0x60000000"},
+			".data": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".bss": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".text": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"336"}
+		},
+		"3": {
+			"ram": {
+							"Origin": "0x00400000",
+							"Length": "67108864",
+							"Used":		"0x04000000"},
+			"rom": {
+							"Origin": "0x60000000",
+							"Length": "16777216",
+							"Used":		"0x60000000"},
+			".data": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".bss": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"0"},
+			".text": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"368"}
+		},
+		"4": {
+			"ram": {
+							"Origin": "0x00400000",
+							"Length": "67108864",
+							"Used":		"0x04000000"},
+			"rom": {
+							"Origin": "0x60000000",
+							"Length": "16777216",
+							"Used":		"0x60000000"},
+			".data": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"4"},
+			".bss": {
+							"Origin": "0x00400004",
+							"Length": "N/A",
+							"Used":		"0"},
+			".text": {
+							"Origin": "0x00400004",
+							"Length": "N/A",
+							"Used":		"368"}
+		},
+		"5": {
+			"ram": {
+							"Origin": "0x00400000",
+							"Length": "67108864",
+							"Used":		"0x04000000"},
+			"rom": {
+							"Origin": "0x60000000",
+							"Length": "16777216",
+							"Used":		"0x60000000"},
+			".data": {
+							"Origin": "0x00400000",
+							"Length": "N/A",
+							"Used":		"4"},
+			".bss": {
+							"Origin": "0x00400004",
+							"Length": "N/A",
+							"Used":		"4"},
+			".text": {
+							"Origin": "0x00400008",
+							"Length": "N/A",
+							"Used":		"368"}
+		}
+	}
+}
+
+

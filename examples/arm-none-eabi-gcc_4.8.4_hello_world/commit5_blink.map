@@ -1,0 +1,110 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+myGlobal            0x4               blink.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x00400000         0x04000000
+rom              0x60000000         0x01000000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.data           0x00400000        0x4
+                0x00400000                _DataStart = .
+ *(.data)
+ .data          0x00400000        0x0 led.o
+ .data          0x00400000        0x4 blink.o
+                0x00400000                myVar
+                0x00400004                _DataEnd = .
+
+.igot.plt       0x00400004        0x0
+ .igot.plt      0x00000000        0x0 led.o
+
+.bss            0x00400004        0x4
+                0x00400004                _BssStart = .
+ *(.bss)
+ .bss           0x00400004        0x0 led.o
+ .bss           0x00400004        0x0 blink.o
+                0x00400004                _BssEnd = .
+ COMMON         0x00400004        0x4 blink.o
+                0x00400004                myGlobal
+
+.text           0x00400008      0x150
+ *(.text)
+ .text          0x00400008       0xa4 led.o
+                0x00400008                ledInit
+                0x0040005c                ledToggle
+ .text          0x004000ac       0xac blink.o
+                0x004000ac                foo
+                0x004000c0                delay_ms
+                0x00400120                main
+LOAD led.o
+LOAD blink.o
+OUTPUT(blink elf32-littlearm)
+
+.rodata         0x00400158       0x20
+ .rodata        0x00400158       0x20 blink.o
+                0x00400158                table
+
+.glue_7         0x00400178        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00400178        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00400178        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00400178        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00400178        0x0
+ .iplt          0x00000000        0x0 led.o
+
+.rel.dyn        0x00400178        0x0
+ .rel.iplt      0x00000000        0x0 led.o
+
+.debug_info     0x00000000      0x18b
+ .debug_info    0x00000000       0x7d led.o
+ .debug_info    0x0000007d      0x10e blink.o
+
+.debug_abbrev   0x00000000      0x121
+ .debug_abbrev  0x00000000       0x4f led.o
+ .debug_abbrev  0x0000004f       0xd2 blink.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 led.o
+ .debug_aranges
+                0x00000020       0x20 blink.o
+
+.debug_line     0x00000000       0xc2
+ .debug_line    0x00000000       0x54 led.o
+ .debug_line    0x00000054       0x6e blink.o
+
+.debug_str      0x00000000       0xef
+ .debug_str     0x00000000       0x9e led.o
+                                 0xb7 (size before relaxing)
+ .debug_str     0x0000009e       0x51 blink.o
+                                 0xef (size before relaxing)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 led.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 blink.o
+
+.ARM.attributes
+                0x00000000       0x30
+ .ARM.attributes
+                0x00000000       0x30 led.o
+ .ARM.attributes
+                0x00000030       0x30 blink.o
+
+.debug_frame    0x00000000       0x9c
+ .debug_frame   0x00000000       0x40 led.o
+ .debug_frame   0x00000040       0x5c blink.o
