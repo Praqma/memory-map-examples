@@ -19,6 +19,7 @@ Associated with the series of commit on the example branch, you must supply some
 Branch and directories:
 
 * create a branch from latest `master`, where your new branch name must contain compiler and version number in the name (e.g. `arm-none-eabi-gcc_4.8.4_hello_world`)
+  * please discard existing `README.md` and delete the `example`-directory
 * create a matching directory in examples (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world`)
 
 Example commits:
