@@ -10,5 +10,4 @@ RUN wget https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q3-update/+download
 	&& dpkg --add-architecture i386 && apt-get -y update && apt-get -y install ia32-libs
 
 ENV PATH $PATH:/opt/gcc-arm-none-eabi-4_8-2014q3/bin"
-
 WORKDIR /data

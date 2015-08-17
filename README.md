@@ -1,83 +1,110 @@
-# memory-map-examples
+# arm-none-eabi-gcc 4.8.4 hello world
 
-Repository for small c/c++ projects that can produce memory maps file from the compile and linking process  to analyse memory consumption by using for example the [Jenkins Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin).
+Hello World ARM example from the the book [Programming Embedded Systems, With C and
+GNU Development Tools, 2nd Edition](http://www.oreilly.com/catalog/embsys2).
+
+It uses GNU Arm croos-compiler version 4.8.4 and an example from the book above.
+
+## Build environment
+
+The docker file uses a debian based GCC docker base image and adds the GNU Arm GCC cross-compiler from launchpad.
+
+## Using docker and building the example
+
+Check the `run.sh` file or read the following to build manually.
+
+First you need to build the docker image from the supplied docker file. We recommend using the command below. 
+
+* uses git to get the current branch name
+* assumes the docker file conforms the usual standard name `Dockerfile`
+* gives the locally build image the name $BRANCHNAME and tag `latest`
+
+```
+	docker build --rm -f Dockerfile -t `git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,'`:latest .
+```
+Now you should be able to build the example using the docker container.
+
+* assumes that current directory contains this readme file you are reading (... that is, a clone of the _memory-map-eamples_ repository on the relevant branch)
+* assumes you have build the image above
+
+```
+	docker run -v `pwd`:/data `git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,'`:latest make clean all
+```
+It is a good idea to save the name branch name and the name of a docker image just build:
+
+```
+	export BN=`git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,'`
+	export DKRIMG=$BN:latest
+```
+
+## The hello world example
+
+This branch have several commits, between the `first_%BRANCHNAME` and the `last_%BRANCHNAME` tags, that changes the hello world example source code showing changes in the produced memory map files.
+
+For example adding an integer array that consumes more memory in the `.text` section.
+
+## Producing different map files
+
+You can see examples of source code changes, and the resulting memory map files, by checking out different version and compile the example:
+
+_Export the branch name and the docker image name we are using as we are about to checkout branches som git symbolic-ref returns another name_:
+
+```
+	export BN=`git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,'`
+	export DKRIMG=$BN:latest
+```
+_checkout the SHA in the workflow between the tags to get the basic example source code_:
+
+```
+	git checkout `git log --format=format:%H --reverse first_$BN^1..last_$BN | sed -n 1p`
+```
+_compile:_ (not the git command finding your image is different from above examples!)
+
+```
+	docker run -v `pwd`:/data $DKRIMG make clean all
+```
+_save your map file for later comparison ...our use the [Jenkins Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin) to analyse it ;-)_
+
+	cp -v blink.map blink-`git describe --tags`.map
+
+_try same work flow again, but use the second and third commit that introduces change memory usage_:
+```
+	git checkout `git log --format=format:%H --reverse first_$BN^1..last_$BN | sed -n 2p`
+	docker run -v `pwd`:/data $DKRIMG make clean all
+	cp -v blink.map blink-`git describe --tags`.map
+	git checkout `git log --format=format:%H --reverse first_$BN^1..last_$BN | sed -n 3p`
+	docker run -v `pwd`:/data $DKRIMG make clean all
+	cp -v blink.map blink-`git describe --tags`.map
+```
+There is now three blink memory map files you can analyse and compare to the code changes :-)
+
+As you probably already figured out, the `sed -n 3p` it the third commit from the `first` tag. You can list and count the number of commit you can try to build with these commands:
+
+_List SHAs between `first` and `last` tags_:
+	
+	git log --format=format:%H --reverse first_$BN^1..last_$BN
+
+_count them_:
+
+	git log --format=format:%H --reverse first_$BN^1..last_$BN | wc -w
+	
 
 
-The idea with these examples are to use them as test base for the [Jenkins Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin), gathering examples on different linker command files, compilers and the resulting memory map files when building them.
+## References
 
-The users of the plugin can contribute (see XXXXXXXXXXXXX FIXME ref to contribute section below XXXXXXXXXXXX)  with examples to this repository, and they are automatically used in  the test suite in the Memory Map Plugin (see XXXXXXXXX insert reference here to memory-map-plugin repository readme - section about testing FIXME XXXXXXXXXXXXXXXXXXXXXX)
+The example is also referenced and explained in more details on [http://www.bogotobogo.com/cplusplus/embeddedSystemsProgramming_gnu_toolchain_ARM_cross_compiler.php](http://www.bogotobogo.com/cplusplus/embeddedSystemsProgramming_gnu_toolchain_ARM_cross_compiler.php)
 
-The examples could also serve as test base scripts and other solutions that mimics the behavior of the Memory Map Plugin if not using [Jenkins CI](http://jenkins-ci.org/).
-
-## Example requirements
-
-Each example is contained on a branch in this repository, and have associated files in the `examples`-directory.
-
-You must prepare a set of commits that changes the an example source code project, commit by commit, to show how a memory map changes for each commit. We will automatically build each commit and analyse the memory map output file.
-Associated with the series of commit on the example branch, you must supply some files in the `example`-directory, like expected memory map output results, a graph configuration for the Memory Map Plugin you find relevant.
-
-Branch and directories:
-
-* create a branch from latest `master`, where your new branch name must contain compiler and version number in the name (e.g. `arm-none-eabi-gcc_4.8.4_hello_world`)
-* create a matching directory in examples (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world`)
-
-Example commits:
-
-* a series of commits that changes the memory usage must be added to the branch, in consecutive order and all buildable
-* the first, respectively the last, commit in the serie must be tagged `first_%BRANCHNAME` and `last_%BRANCHNAME` (e.g. `first_arm-none-eabi-gcc_4.8.4_hello_world` and `last_arm-none-eabi-gcc_4.8.4_hello_world`)
-
-Build information:
-
-* an automated prepared build environment, preferable using docker, must be available to use for building so we know how to build it
-* if you supply your own docker file for building a docker image name it `Dockerfile` and place it in the relevant example directory (e.g. `examples/arm-none-eabi-gcc_4.8.4_hello_world/Dockerfile`)
-* there must be an elaborate readme explaing how to use the example, it must be called `README.md` and placed on the branch and completely replace the `README.md` from the `master`-branch
-* on the branch, for every commit, there must be a `run.sh` script file that will the source code checked out in the repository
-
-Associated example files:
-
-In the examples directory, the following files need to be available:
-
-* Optional: `Dockerfile` to build an image
-* `expectedResults.json` that explains the expected memory map output file result (see one of the other examples)
-* `graphConfiguration.json` explaining how to configure the Memory Map Plugin graphs (see one of the other examples)
-* Optional: If you run the examples manually you can also add the generated series of memory map files to the example directory for reference. See for example `examples/arm-none-eabi-gcc_4.8.4_hello_world/commit*_blink.map`.
+A good reference explaining about the memory sections: [http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained](http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained)
 
 
+## Changelog
 
-**We can support and help with everything else than the source code changes and how to build it... send us an mail or just contribute what-ever you have through a pull request**
+_These are the branches that have existed for this example over time (topmost is the current):_
 
+__arm-none-eabi-gcc_4.8.4_hello_world_update1__
 
+  * Moved associated files like expected results etc. to the master branch example directory, for easier maintenance.
 
-## Get your example tested
+__arm-none-eabi-gcc_4.8.4_hello_world__
 
-If you find out that the Memory Map Plugin fails to analyse your exact combination of linker/command setup, and the resulting memory map please contribute with data to our tests. Then you also easily can raise a [Jenkins JiRA issue](https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20component%20%3D%20%27memory-map-plugin%27) and point to your contributing example that fails.
-
-You have two choices:
-
-* Supply a linker comand file, and example memory map file generated with that setup as a one-off test. In this case you can make a pull request adding them to the integration tests of the [Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin), or simple attache them to the JIRA issue you create.
-* create an example branch in this repository as explained
-
-
-## Updating examples
-
-If an example requires to be updated, you must create a new branch for the updated example.
-
-E.g. branch `arm-none-eabi-gcc_4.8.4_hello_world` becomes `arm-none-eabi-gcc_4.8.4_hello_world_update1`.
-
-Delete the old branch, and add a changelog section to the branch readme. Also remember to rename the example directory to match.
-
-Git cherry-pick will help you pick out commits for the new branch, and even modify them before committing them using the `--no-commit` paramter.
-
-
-## Merging branches
-
-Do not try to merge branches, they are used as isolated work spaces. They are not supposed to be merged with master or each other.
-
-## Contributions
-
-Please contribute by pull request.
-
-
-## Support and issue
-
-Send a mail to support@praqma.net
+  * The initial example created
