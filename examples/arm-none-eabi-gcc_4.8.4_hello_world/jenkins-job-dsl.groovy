@@ -1,5 +1,5 @@
 freeStyleJob("${BASE_NAME}_${EXAMPLE_BRANCH}_GEN") {
-    description("The memory-map-exampl demo job that shows the plugin in action on the branch ${BRANCH_NAME}")
+    description("The memory-map-exampl demo job that shows the plugin in action on the branch ${EXAMPLE_BRANCH}")
     label 'linux && docker-tools'
     logRotator(-1, 500, -1, -1)
   scm {
