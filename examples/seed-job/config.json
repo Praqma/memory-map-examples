@@ -1,0 +1,83 @@
+{
+  "wordSize": "8",
+  "showBytesOnGraph": "false",
+  "scale": "default",
+  "chosenParsers": {
+    "net.praqma.jenkins.memorymap.parser.gcc.GccMemoryMapParser": [
+      {
+        "graphConfiguration": {
+          "net.praqma.jenkins.memorymap.graph.MemoryMapGraphConfiguration": [
+            {
+              "graphCaption": "Memory sections",
+              "graphDataList": ".data,.bss,.text"
+            },
+            {
+              "graphCaption": "Target memory",
+              "graphDataList": "rom,ram"
+            }
+          ]
+        },
+        "parserUniqueName": "Gcc1",
+        "mapFile": "blink.map",
+        "configurationFile": "viperlite.ld",
+        "parserTitle": "GCC memory map"
+      },
+      {
+        "graphConfiguration": {
+          "net.praqma.jenkins.memorymap.graph.MemoryMapGraphConfiguration": [
+            {
+              "graphCaption": "Memory sections",
+              "graphDataList": ".data,.bss,.text"
+            },
+            {
+              "graphCaption": "Target memory",
+              "graphDataList": "rom,ram"
+            }
+          ]
+        },
+        "parserUniqueName": "Gcc2",
+        "mapFile": "blink.map",
+        "configurationFile": "viperlite.ld",
+        "parserTitle": "GCC memory map"
+      }
+    ],
+    "net.praqma.jenkins.memorymap.parser.ti.TexasInstrumentsMemoryMapParser": [
+      {
+        "graphConfiguration": {
+          "net.praqma.jenkins.memorymap.graph.MemoryMapGraphConfiguration": [
+            {
+              "graphCaption": "Memory sections",
+              "graphDataList": ".data,.bss,.text"
+            },
+            {
+              "graphCaption": "Target memory",
+              "graphDataList": "rom,ram"
+            }
+          ]
+        },
+        "parserUniqueName": "TexasInstruments1",
+        "mapFile": "blink.map",
+        "configurationFile": "viperlite.ld",
+        "parserTitle": "TI memory map"
+      },
+      {
+        "graphConfiguration": {
+          "net.praqma.jenkins.memorymap.graph.MemoryMapGraphConfiguration": [
+            {
+              "graphCaption": "Memory sections",
+              "graphDataList": ".data,.bss,.text"
+            },
+            {
+              "graphCaption": "Target memory",
+              "graphDataList": "rom,ram"
+            }
+          ]
+        },
+        "parserUniqueName": "TexasInstruments2",
+        "mapFile": "blink.map",
+        "configurationFile": "viperlite.ld",
+        "parserTitle": "TI memory map"
+      }
+    ]
+  }
+}
