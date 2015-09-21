@@ -2,22 +2,23 @@
 	"wordSize": "8",
 	"showBytesOnGraph": "false",
 	"scale": "default",
-
-	"choseParsers": {
-		"net.praqma.jenkins.memorymap.parser.gcc.GccMemoryMapParser": {
+	"chosenParsers": [
+		{
+			"type": "GccMemoryMapParser",
 			"parserUniqueName": "Gcc",
 			"mapFile": "blink.map",
 			"configurationFile": "viperlite.ld",
 			"parserTitle": "GCC memory map",
-
-			"graphConfiguration": {
-				"graphCaption": "Memory sections",
-				"graphDataList": ".data,.bss,.text" },
-			"graphConfiguration": {
-				"graphCaption": "Target memory",
-				"graphDataList": "rom,ram" }
+			"graphConfiguration": [
+				{
+					"graphCaption": "Memory sections",
+					"graphDataList": ".data,.bss,.text"
+				},
+				{
+					"graphCaption": "Target memory",
+					"graphDataList": "rom,ram"
+				}
+			]
 		}
-	}
+	]
 }
-
-

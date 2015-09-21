@@ -1,114 +1,167 @@
 {
-	"buildresults": {
-		"1": {
-			"ram": {
-							"Origin": "0x00400000",
-							"Length": "67108864",
-							"Used":		"0x04000000"},
-			"rom": {
-							"Origin": "0x60000000",
-							"Length": "16777216",
-							"Used":		"0x60000000"},
-			".data": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".bss": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".text": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"316"}
+	"buildResults": {
+		"1": 
+		{
+			"ram": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"67108864",
+				"used":		"0x04000000"
+			},
+			"rom": 
+			{
+				"origin": 	"0x60000000",
+				"length": 	"16777216",
+				"used":		"0x60000000"
+			},
+			".data": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"},
+			".bss": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".text": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"316"
+			}
 		},
-		"2": {
-			"ram": {
-							"Origin": "0x00400000",
-							"Length": "67108864",
-							"Used":		"0x04000000"},
-			"rom": {
-							"Origin": "0x60000000",
-							"Length": "16777216",
-							"Used":		"0x60000000"},
-			".data": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".bss": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".text": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"336"}
+		"2": 
+		{
+			"ram": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"67108864",
+				"used":		"0x04000000"
+			},
+			"rom": 
+			{
+				"origin": 	"0x60000000",
+				"length": 	"16777216",
+				"used":		"0x60000000"
+			},
+			".data": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".bss": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".text": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"336"
+			}
 		},
-		"3": {
-			"ram": {
-							"Origin": "0x00400000",
-							"Length": "67108864",
-							"Used":		"0x04000000"},
-			"rom": {
-							"Origin": "0x60000000",
-							"Length": "16777216",
-							"Used":		"0x60000000"},
-			".data": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".bss": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"0"},
-			".text": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"368"}
+		"3": 
+		{
+			"ram": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"67108864",
+				"used":		"0x04000000"
+			},
+			"rom": 
+			{
+				"origin": 	"0x60000000",
+				"length": 	"16777216",
+				"used":		"0x60000000"
+			},
+			".data": 
+			{
+				"origin":	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".bss": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".text": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"368"
+			}
 		},
-		"4": {
-			"ram": {
-							"Origin": "0x00400000",
-							"Length": "67108864",
-							"Used":		"0x04000000"},
-			"rom": {
-							"Origin": "0x60000000",
-							"Length": "16777216",
-							"Used":		"0x60000000"},
-			".data": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"4"},
-			".bss": {
-							"Origin": "0x00400004",
-							"Length": "N/A",
-							"Used":		"0"},
-			".text": {
-							"Origin": "0x00400004",
-							"Length": "N/A",
-							"Used":		"368"}
+		"4": 
+		{
+			"ram": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"67108864",
+				"used":		"0x04000000"
+			},
+			"rom": 
+			{
+				"origin": 	"0x60000000",
+				"length": 	"16777216",
+				"used":		"0x60000000"
+			},
+			".data": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"4"
+			},
+			".bss": 
+			{
+				"origin": 	"0x00400004",
+				"length": 	"N/A",
+				"used":		"0"
+			},
+			".text": 
+			{
+				"origin": 	"0x00400004",
+				"length": 	"N/A",
+				"used":		"368"
+			}
 		},
 		"5": {
-			"ram": {
-							"Origin": "0x00400000",
-							"Length": "67108864",
-							"Used":		"0x04000000"},
-			"rom": {
-							"Origin": "0x60000000",
-							"Length": "16777216",
-							"Used":		"0x60000000"},
-			".data": {
-							"Origin": "0x00400000",
-							"Length": "N/A",
-							"Used":		"4"},
-			".bss": {
-							"Origin": "0x00400004",
-							"Length": "N/A",
-							"Used":		"4"},
-			".text": {
-							"Origin": "0x00400008",
-							"Length": "N/A",
-							"Used":		"368"}
+			"ram": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"67108864",
+				"used":		"0x04000000"
+			},
+			"rom": 
+			{
+				"origin": 	"0x60000000",
+				"length": 	"16777216",
+				"used":		"0x60000000"
+			},
+			".data": 
+			{
+				"origin": 	"0x00400000",
+				"length": 	"N/A",
+				"used":		"4"
+			},
+			".bss": 
+			{
+				"origin": 	"0x00400004",
+				"length": 	"N/A",
+				"used":		"4"
+			},
+			".text": 
+			{
+				"origin": 	"0x00400008",
+				"length": 	"N/A",
+				"used":		"368"
+			}
 		}
 	}
 }
