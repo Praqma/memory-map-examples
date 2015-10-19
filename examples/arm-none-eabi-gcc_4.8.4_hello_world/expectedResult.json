@@ -1,3 +1,4 @@
+// Length values are actually in hex. Related issue: JENKINS-31021
 {
 	"buildResults": {
 		"1": 
