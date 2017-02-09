@@ -1,3 +1,7 @@
+---
+maintainer: buep
+---
+
 # memory-map-examples
 
 Repository for small c/c++ projects that can produce memory maps file from the compile and linking process  to analyse memory consumption by using for example the [Jenkins Memory Map Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin).
