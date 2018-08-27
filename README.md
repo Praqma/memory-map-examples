@@ -1,5 +1,5 @@
 ---
-maintainer: buep
+maintainer: MadsNielsen
 ---
 
 # memory-map-examples
